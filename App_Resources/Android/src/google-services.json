@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089311462266",
+    "project_id": "id-checker-a70a6",
+    "storage_bucket": "id-checker-a70a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089311462266:android:ec901e6cf16986cc0d3cc3",
+        "android_client_info": {
+          "package_name": "com.kang.cahya.apps.idchecker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFR-eHJd2IwRLY9B_vFLUrSzvbuCuB20M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

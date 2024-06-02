@@ -1,0 +1,67 @@
+<Page 
+    loaded="onLoaded" 
+    navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:lv="nativescript-ui-listview"
+    actionBarHidden="true"
+    class="dark">
+    <!-- <ActionBar>
+        <Label text="Home" />
+    </ActionBar> -->
+
+    <GridLayout rows="auto,*, auto">
+        <GridLayout rows="10, auto, 10" columns="auto, *, auto, auto" row="0">
+            <Image src="~/assets/logo.png" height="50" row="1" col="0" />
+            <Label text="ID CheckER" fontSize="18" fontWeight="bold" row="1" col="1" />
+            
+            <Label textWrap="true" fontSize="18" marginRight="15" class="border" padding="5 15 5 15" row="1" col="2">
+                <FormattedString>
+                    <Span text="&#xf1da;" class="fas" />
+                    <Span text="&nbsp;&nbsp;" />
+                    <Span text="3" />
+                </FormattedString>
+            </Label>
+            <Label text="&#xf129;" class="fas border" fontSize="18" marginRight="10" padding="5 15 5 15" row="1" col="3" />
+        </GridLayout>
+        <lv:RadListView items="{{ menus }}" itemTap="onItemTap" row="1">
+            <lv:RadListView.listViewLayout>
+                <lv:ListViewGridLayout spanCount="1" />
+            </lv:RadListView.listViewLayout>
+            <lv:RadListView.itemTemplate>
+                <GridLayout rows="auto,auto" columns="auto, *" class="border" margin="5" padding="10">
+                    <Label row="0" col="0" text="{{ icon }}" class="{{ class }}" fontSize="32" />
+                    <Label row="0" col="1" text="{{ name }}" fontSize="18" textWrap="true" />
+                    <Label row="1" col="0" colSpan="2" text="{{ description }}" fontSize="16" textWrap="true" />
+                </GridLayout>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+        <!-- <ListView row="1" items="{{ menus }}" itemTap="onItemTap" separatorColor="#FFFFFF">
+            <ListView.itemTemplate>
+                <GridLayout class="list-group-item" columns="auto, *" rows="auto,auto">
+                    <Label text="{{ icon }}" textWrap="true" class="{{ class }}" fontSize="32" col="0" row="0" rowSpan="2" />
+                    <Label text="{{ name }}" textWrap="true" col="1" row="0" />
+                    <Label text="{{ description }}" textWrap="true" col="1" row="2" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>  -->
+        <!-- <lv:RadListView row="1" items="{{ menus }}">
+            <lv:RadListView.listViewLayout>
+                <lv:ListViewLinearLayout scrollDirection="Horizontal" />
+            </lv:RadListView.listViewLayout>
+            <lv:RadListView.itemTemplate>
+                <GridLayout 
+                    class="table"
+                    height="100%" 
+                    width="100%" 
+                    columns="*, auto, auto, auto, auto, *"
+                    rows="auto, auto, auto, auto, *" />
+            </lv:RadListView.itemTemplate>
+            <lv:RadListView.itemTemplate>
+                <Label row="{{ row }}" col="{{ col }}" text="{{ name }}" />
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView> -->
+        <!-- <StackLayout row="2">
+            <Button text="Show Bottom Sheet" tap="showBottomSheet" />
+        </StackLayout> -->
+    </GridLayout>
+</Page>

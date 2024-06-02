@@ -1,0 +1,130 @@
+<Page 
+    loaded="onLoaded" 
+    actionBarHidden="true"
+    class="page dark">
+    <GridLayout rows="auto, auto" padding="16" class="border" >
+        <GridLayout 
+            rows="auto, auto" 
+            columns="*, auto" 
+            row="0" 
+            visibility="{{ !isResult ? 'visible' : 'collapsed' }}">
+            <Label text="KTP Checker" row="0" col="0" fontSize="18" />
+            <Button text="X" tap="{{ onClose }}" row="0" col="1" width="50" background="#000" color="#FFF" />
+            <StackLayout row="1" col="0" colSpan="2">
+                <Label text="NIK" marginLeft="20" fontWeight="bold" marginTop="10" />
+                <TextField text="{{ nik }}" hint="NIK" color="#FFF" placeholderColor="#FFF" />
+                <ActivityIndicator busy="{{ loading }}" />
+                <Button text="{{ loading ? 'Loading...' : 'Check' }}" tap="{{ onSubmit }}" background="#FFF" color="#000" />
+                <Label textWrap="true" fontSize="16" marginTop="25" color="#F44336">
+                    <FormattedString>
+                        <Span text="DISCLAIMER : " fontWeight="900" />
+                        <Span text="kami tidak melakukan Collect Data sedikitpun, semua NIK yang kamu input disini tidak kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing pengguna, dan data dapat dihapus kapanpun pengguna mau." fontStyle="italic" />
+                    </FormattedString>
+                </Label>
+            </StackLayout>
+        </GridLayout>
+        <GridLayout rows="auto,0,*,10,auto" columns="*,auto" row="1" visibility="{{ isResult ? 'visible' : 'collapsed' }}">
+            <Label textWrap="true" row="0" col="0" fontSize="18">
+                <FormattedString>
+                    <Span text="{{ valid ? '&#xf058;' : '&#xf057;' }}" class="fas" color="{{ valid ? '#4CAF50' : '#F44336' }}" />
+                    <Span text="&nbsp;&nbsp;" />
+                    <Span text="{{ valid ? 'valid' : 'nik ' + nik + ' invalid' }}" />
+                </FormattedString>
+            </Label>
+            <Button text="X" tap="{{ onClose }}" row="0" col="1" width="50" background="#000" color="#FFF" />
+            <ScrollView row="2" col="0" colSpan="2" orientation="horizontal" visibility="{{ valid ? 'visible' : 'collapsed' }}">
+                <GridLayout rows="auto,10,auto" columns="*,10,auto" class="ktp-background" color="#000" padding="10 20 10 20" borderRadius="10">
+                    <StackLayout row="0" col="0" colSpan="3" >
+                        <Label text="{{ 'PROVINSI ' + provinsi }}" horizontalAlignment="center" fontSize="14" />
+                        <Label text="{{ kabupaten_kota }}" horizontalAlignment="center" fontSize="14" />
+                    </StackLayout>
+                    <GridLayout 
+                        rows="auto, 0, auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                        columns="auto,10,*"
+                        row="2"
+                        col="0">
+                        <Label text="NIK" row="2" col="0" fontSize="11" />
+                        <Label text=":" row="2" col="1" fontSize="11" />
+                        <Label text="{{ nik }}" row="2" col="2" fontSize="11" />
+
+                        <Label text="Nama" row="3" col="0" fontSize="11" />
+                        <Label text=":" row="3" col="1" fontSize="11" />
+                        <Label text="_SENSOR_" row="3" col="2" fontSize="11" />
+                        
+                        <Label text="Tempat/Tgl Lahir" row="4" col="0" fontSize="11" />
+                        <Label text=":" row="4" col="1" fontSize="11" />
+                        <Label text="{{ tanggal_lahir }}" row="4" col="2" fontSize="11" />
+                        
+                        <Label text="Jenis Kelamin" row="5" col="0" fontSize="11" />
+                        <Label text=":" row="5" col="1" fontSize="11" />
+                        <!-- <Label   /> -->
+                        <Label textWrap="true" row="5" col="2">
+                            <FormattedString>
+                                <Span text="{{ jenis_kelamin }}" fontSize="11" />
+                                <Span text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+                                <Span text="Gol. Darah : _SENSOR_" fontSize="11" />
+                            </FormattedString>
+                        </Label>
+                        
+                        <Label text="Alamat" row="6" col="0" fontSize="11" />
+                        <Label text=":" row="6" col="1" fontSize="11" />
+                        <Label text="_SENSOR_" row="6" col="2" fontSize="11" />
+                        
+                        <Label text="RT/RW" row="7" col="0" paddingLeft="23" fontSize="11" />
+                        <Label text=":" row="7" col="1" fontSize="11" />
+                        <Label text="_SENSOR_" row="7" col="2" fontSize="11" />
+                        
+                        <Label text="Kel/Desa" row="8" col="0" paddingLeft="23" fontSize="11" />
+                        <Label text=":" row="8" col="1" fontSize="11" />
+                        <Label text="_SENSOR_" row="8" col="2" fontSize="11" />
+                        
+                        <Label text="Kecamatan" row="9" col="0" paddingLeft="23" fontSize="11" />
+                        <Label text=":" row="9" col="1" fontSize="11" />
+                        <Label text="{{ kecamatan }}" row="9" col="2" fontSize="11" />
+                        
+                        <Label text="Agama" row="10" col="0" fontSize="11" />
+                        <Label text=":" row="10" col="1" fontSize="11" />
+                        <Label text="_SENSOR_" row="10" col="2" fontSize="11" />
+                        
+                        <Label text="Status Perkawinan" row="11" col="0" fontSize="11" />
+                        <Label text=":" row="11" col="1" fontSize="11" />
+                        <Label text="_SENSOR_" row="11" col="2" fontSize="11" />
+                        
+                        <Label text="Pekerjaan" row="12" col="0" fontSize="11" />
+                        <Label text=":" row="12" col="1" fontSize="11" />
+                        <Label text="_SENSOR_" row="12" col="2" fontSize="11" />
+                        
+                        <Label text="Kewarganegaraan" row="13" col="0" fontSize="11" />
+                        <Label text=":" row="13" col="1" fontSize="11" />
+                        <Label text="WNI" row="13" col="2" fontSize="11" />
+                        
+                        <Label text="Berlaku Hingga" row="14" col="0" fontSize="11" />
+                        <Label text=":" row="14" col="1" fontSize="11" />
+                        <Label text="Seumur Hidup" row="14" col="2" fontSize="11" />
+                    </GridLayout>
+                    <GridLayout rows="auto,auto,auto,auto" row="2" col="2">
+                        <Label text="__FOTO_SENSOR" width="150" height="165" backgroundColor="#F44336" horizontalAlignment="center" row="0"  />
+                        <Label text="{{ kabupaten_kota }}" horizontalAlignment="center" row="1" />
+                        <Label text="se-ns-or!!" row="2" horizontalAlignment="center" />
+                        <Label text="__SIGNATURE_SENSOR" width="150" height="38" backgroundColor="#FFF" horizontalAlignment="center" row="3" />
+                    </GridLayout>
+                </GridLayout>
+            </ScrollView>
+            <StackLayout row="4" col="0" colSpan="2" visibility="{{ valid ? 'visible' : 'collapsed' }}">
+                <Label textWrap="true" fontSize="16">
+                    <FormattedString>
+                        <Span text="INFO : " fontWeight="900" />
+                        <Span text="data disajikan dalam format terbatas, sebagian informasi disensor demi keamanan." fontStyle="italic" />
+                    </FormattedString>
+                </Label>
+                <Label textWrap="true" fontSize="16" marginTop="15" color="#F44336">
+                    <FormattedString>
+                        <Span text="DISCLAIMER : " fontWeight="900" />
+                        <Span text="kami tidak melakukan Collect Data sedikitpun, semua NIK yang kamu input disini tidak kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing pengguna, dan data dapat dihapus kapanpun pengguna mau." fontStyle="italic" />
+                    </FormattedString>
+                </Label>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>
+
