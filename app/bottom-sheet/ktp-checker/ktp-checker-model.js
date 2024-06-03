@@ -12,11 +12,6 @@ export class KtpCheckerModel extends Observable {
     console.log("loading >> ", this.get("loading"));
   }
 
-  onTap() {
-    this._counter--;
-    this.updateMessage();
-  }
-
   onSubmit(args) {
     const button = args.object;
 
@@ -27,7 +22,7 @@ export class KtpCheckerModel extends Observable {
 
       /* const newData = { action: "submit", ...button.bindingContext };
       button.closeBottomSheet(newData); */
-    }, 1000);
+    }, 3000);
 
     console.log("onSubmit bro...");
   }

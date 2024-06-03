@@ -13,7 +13,7 @@
             <StackLayout row="1" col="0" colSpan="2">
                 <Label text="NIK" marginLeft="20" fontWeight="bold" marginTop="10" />
                 <TextField text="{{ nik }}" hint="NIK" color="#FFF" placeholderColor="#FFF" />
-                <ActivityIndicator busy="{{ loading }}" />
+                <ActivityIndicator busy="{{ loading }}" color="#FFF" />
                 <Button text="{{ loading ? 'Loading...' : 'Check' }}" tap="{{ onSubmit }}" background="#FFF" color="#000" />
                 <Label textWrap="true" fontSize="16" marginTop="25" color="#F44336">
                     <FormattedString>
