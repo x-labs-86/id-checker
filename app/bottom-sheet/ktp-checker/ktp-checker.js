@@ -1,8 +1,9 @@
 import { fromObject } from "@nativescript/core";
+import { KtpCheckerModel } from "./ktp-checker-model";
 
 export function onLoaded(args) {
   const page = args.object;
-  var context = fromObject({
+  /* var context = fromObject({
     loading: false,
     onSubmit: function (args) {
       const button = args.object;
@@ -27,8 +28,9 @@ export function onLoaded(args) {
       const newData = { action: "close", ...button.bindingContext };
       button.closeBottomSheet(newData);
     },
-  });
-  page.bindingContext = context;
+  }); */
+  // page.bindingContext = context;
+  page.bindingContext = new KtpCheckerModel();
 }
 
 /* export function onLoaded(args) {

@@ -117,12 +117,12 @@
                         <Span text="data disajikan dalam format terbatas, sebagian informasi disensor demi keamanan." fontStyle="italic" />
                     </FormattedString>
                 </Label>
-                <Label textWrap="true" fontSize="16" marginTop="15" color="#F44336">
+                <!-- <Label textWrap="true" fontSize="16" marginTop="15" color="#F44336">
                     <FormattedString>
                         <Span text="DISCLAIMER : " fontWeight="900" />
                         <Span text="kami tidak melakukan Collect Data sedikitpun, semua NIK yang kamu input disini tidak kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing pengguna, dan data dapat dihapus kapanpun pengguna mau." fontStyle="italic" />
                     </FormattedString>
-                </Label>
+                </Label> -->
             </StackLayout>
         </GridLayout>
     </GridLayout>

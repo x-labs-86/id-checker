@@ -16,7 +16,7 @@ var menus = [
     row: 0,
     col: 1,
   },
-  {
+  /* {
     icon: fontAwesomeParser("f2c2"),
     class: "far",
     name: "ATM Number",
@@ -45,7 +45,7 @@ var menus = [
     view: "~/bottom-sheet/bottom-sheet",
     row: 0,
     col: 4,
-  },
+  }, */
 ];
 
 export function onLoaded(args) {
