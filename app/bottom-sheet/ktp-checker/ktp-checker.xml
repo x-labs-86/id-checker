@@ -13,8 +13,11 @@
             <StackLayout row="1" col="0" colSpan="2">
                 <Label text="NIK" marginLeft="20" fontWeight="bold" marginTop="10" />
                 <TextField text="{{ nik }}" hint="NIK" color="#FFF" placeholderColor="#FFF" />
-                <ActivityIndicator busy="{{ loading }}" color="#FFF" />
-                <Button text="{{ loading ? 'Loading...' : 'Check' }}" tap="{{ onSubmit }}" background="#FFF" color="#000" />
+                <StackLayout orientation="horizontal" horizontalAlignment="center" visibility="{{ loading ? 'visible' : 'collapsed' }}">
+                    <ActivityIndicator busy="true" color="#FFF" />
+                    <Label text="&nbsp;Checking process..." />
+                </StackLayout>
+                <Button text="Check" tap="{{ onSubmit }}" background="#FFF" color="#000" visibility="{{ !loading ? 'visible' : 'collapsed' }}" />
                 <Label textWrap="true" fontSize="16" marginTop="25" color="#F44336">
                     <FormattedString>
                         <Span text="DISCLAIMER : " fontWeight="900" />
@@ -49,7 +52,7 @@
 
                         <Label text="Nama" row="3" col="0" fontSize="11" />
                         <Label text=":" row="3" col="1" fontSize="11" />
-                        <Label text="_SENSOR_" row="3" col="2" fontSize="11" />
+                        <Label text="&#xf023; sensor" class="fas" row="3" col="2" fontSize="10" />
                         
                         <Label text="Tempat/Tgl Lahir" row="4" col="0" fontSize="11" />
                         <Label text=":" row="4" col="1" fontSize="11" />
@@ -57,26 +60,26 @@
                         
                         <Label text="Jenis Kelamin" row="5" col="0" fontSize="11" />
                         <Label text=":" row="5" col="1" fontSize="11" />
-                        <!-- <Label   /> -->
                         <Label textWrap="true" row="5" col="2">
                             <FormattedString>
                                 <Span text="{{ jenis_kelamin }}" fontSize="11" />
                                 <Span text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
-                                <Span text="Gol. Darah : _SENSOR_" fontSize="11" />
+                                <Span text="Gol. Darah :&nbsp;"  fontSize="11" />
+                                <Span text="&#xf023; sensor" class="fas"  fontSize="10" />
                             </FormattedString>
                         </Label>
                         
                         <Label text="Alamat" row="6" col="0" fontSize="11" />
                         <Label text=":" row="6" col="1" fontSize="11" />
-                        <Label text="_SENSOR_" row="6" col="2" fontSize="11" />
+                        <Label text="&#xf023; sensor" class="fas" row="6" col="2" fontSize="10" />
                         
                         <Label text="RT/RW" row="7" col="0" paddingLeft="23" fontSize="11" />
                         <Label text=":" row="7" col="1" fontSize="11" />
-                        <Label text="_SENSOR_" row="7" col="2" fontSize="11" />
+                        <Label text="&#xf023; sensor" class="fas" row="7" col="2" fontSize="10" />
                         
                         <Label text="Kel/Desa" row="8" col="0" paddingLeft="23" fontSize="11" />
                         <Label text=":" row="8" col="1" fontSize="11" />
-                        <Label text="_SENSOR_" row="8" col="2" fontSize="11" />
+                        <Label text="&#xf023; sensor" class="fas" row="8" col="2" fontSize="10" />
                         
                         <Label text="Kecamatan" row="9" col="0" paddingLeft="23" fontSize="11" />
                         <Label text=":" row="9" col="1" fontSize="11" />
@@ -84,15 +87,15 @@
                         
                         <Label text="Agama" row="10" col="0" fontSize="11" />
                         <Label text=":" row="10" col="1" fontSize="11" />
-                        <Label text="_SENSOR_" row="10" col="2" fontSize="11" />
+                        <Label text="&#xf023; sensor" class="fas" row="10" col="2" fontSize="10" />
                         
                         <Label text="Status Perkawinan" row="11" col="0" fontSize="11" />
                         <Label text=":" row="11" col="1" fontSize="11" />
-                        <Label text="_SENSOR_" row="11" col="2" fontSize="11" />
+                        <Label text="&#xf023; sensor" class="fas" row="11" col="2" fontSize="10" />
                         
                         <Label text="Pekerjaan" row="12" col="0" fontSize="11" />
                         <Label text=":" row="12" col="1" fontSize="11" />
-                        <Label text="_SENSOR_" row="12" col="2" fontSize="11" />
+                        <Label text="&#xf023; sensor" class="fas" row="12" col="2" fontSize="10" />
                         
                         <Label text="Kewarganegaraan" row="13" col="0" fontSize="11" />
                         <Label text=":" row="13" col="1" fontSize="11" />
@@ -103,10 +106,10 @@
                         <Label text="Seumur Hidup" row="14" col="2" fontSize="11" />
                     </GridLayout>
                     <GridLayout rows="auto,auto,auto,auto" row="2" col="2">
-                        <Label text="__FOTO_SENSOR" width="150" height="165" backgroundColor="#F44336" horizontalAlignment="center" row="0"  />
+                        <Label text="&nbsp; &#xf023; photo sensor" class="fas" fontSize="10" width="150" height="165" backgroundColor="#F44336" horizontalAlignment="center" row="0"  />
                         <Label text="{{ kabupaten_kota }}" horizontalAlignment="center" row="1" />
-                        <Label text="se-ns-or!!" row="2" horizontalAlignment="center" />
-                        <Label text="__SIGNATURE_SENSOR" width="150" height="38" backgroundColor="#FFF" horizontalAlignment="center" row="3" />
+                        <Label text="&#xf023; sensor" class="fas" fontSize="10" row="2" horizontalAlignment="center" />
+                        <Label text="&nbsp; &#xf023; signature sensor" class="fas" fontSize="10" width="150" height="38" backgroundColor="#FFF" marginTop="5" horizontalAlignment="center" row="3" />
                     </GridLayout>
                 </GridLayout>
             </ScrollView>
@@ -114,7 +117,7 @@
                 <Label textWrap="true" fontSize="16">
                     <FormattedString>
                         <Span text="INFO : " fontWeight="900" />
-                        <Span text="data disajikan dalam format terbatas, sebagian informasi disensor demi keamanan." fontStyle="italic" />
+                        <Span text="data disajikan dalam format terbatas, sebagian informasi disensor dikarenakan kami tidak ada kewenangan untuk membuka data secara lengkap. Untuk lebih lanjut bisa datang langsung ke kantor dukcapil terdekat atau kanal lainnya yang tersedia." fontStyle="italic" />
                     </FormattedString>
                 </Label>
                 <!-- <Label textWrap="true" fontSize="16" marginTop="15" color="#F44336">

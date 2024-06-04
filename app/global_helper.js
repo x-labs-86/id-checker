@@ -2,7 +2,7 @@ import {
   InterstitialAd,
   RewardedInterstitialAd,
 } from "@nativescript/firebase-admob";
-import { Http, Dialogs } from "@nativescript/core";
+import { Http, Dialogs, Connectivity } from "@nativescript/core";
 
 import { SQL__query } from "~/sql_helper";
 
@@ -23,6 +23,47 @@ export function init__tables() {
 
 export function fontAwesomeParser(avatar) {
   return String.fromCharCode(parseInt(avatar, 16));
+}
+
+export function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function connectivity() {
+  let response = {
+    connected: false,
+    type: "none",
+  };
+  Connectivity.startMonitoring((change) => {
+    switch (change) {
+      case Connectivity.connectionType.wifi:
+        response.connected = true;
+        response.type = "wifi";
+        break;
+      case Connectivity.connectionType.ethernet:
+        response.connected = true;
+        response.type = "wifi";
+        break;
+      case Connectivity.connectionType.mobile:
+        response.connected = true;
+        response.type = "mobile";
+        break;
+      case Connectivity.connectionType.bluetooth:
+        response.connected = false;
+        response.type = "none";
+        break;
+      case Connectivity.connectionType.vpn:
+        response.connected = false;
+        response.type = "none";
+        break;
+      default:
+        response.connected = false;
+        response.type = "none";
+        break;
+    }
+  });
+
+  return response;
 }
 
 export function replaceAll(str, find, replace) {

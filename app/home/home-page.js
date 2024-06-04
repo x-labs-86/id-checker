@@ -1,5 +1,5 @@
 import { GlobalModel } from "~/global_model";
-import { fontAwesomeParser } from "~/global_helper";
+import { fontAwesomeParser, connectivity } from "~/global_helper";
 
 import { module_caller } from "~/module_caller";
 
@@ -58,6 +58,7 @@ export function onNavigatingTo(args) {
   context = model;
 
   context.set("menus", menus);
+  context.set("isConnected", connectivity().connected);
 
   page.bindingContext = context;
 }

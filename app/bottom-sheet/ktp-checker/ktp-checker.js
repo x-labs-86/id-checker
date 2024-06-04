@@ -1,64 +1,52 @@
 import { fromObject } from "@nativescript/core";
-import { KtpCheckerModel } from "./ktp-checker-model";
+import { getRandomNumber } from "~/global_helper";
 
 export function onLoaded(args) {
   const page = args.object;
-  /* var context = fromObject({
+
+  page.on("shownInBottomSheet", (args) => {
+    console.log("shownInBottomSheet >>> ", args.context);
+    console.log("shownInBottomSheet", args.context.nik);
+    setupContext(args.context);
+
+    // override bottom-sheet plugin context reset after opening
+    // https://github.com/nativescript-community/ui-material-components/blob/577b92c21b4e67e906787d518373bd967bc21dee/src/bottomsheet/bottomsheet.ios.ts#L455
+    page.bindingContext = bindingContext;
+  });
+  // page.bindingContext = new KtpCheckerModel();
+}
+
+let bindingContext;
+function setupContext(openContext) {
+  bindingContext = fromObject({
+    ...openContext,
     loading: false,
-    onSubmit: function (args) {
+    toggleLoading() {
+      bindingContext.loading = !bindingContext.loading;
+      this.set("loading", bindingContext.loading);
+      console.log("loading >> ", this.get("loading"));
+    },
+
+    onSubmit(args) {
       const button = args.object;
 
-      context.set("loading", true);
+      bindingContext.toggleLoading();
 
       setTimeout(() => {
-        context.set("loading", false);
-        console.log("loading 2 >> ", context.get("loading"));
+        bindingContext.toggleLoading();
 
         const newData = { action: "submit", ...button.bindingContext };
         button.closeBottomSheet(newData);
-      }, 1000);
+      }, getRandomNumber(1000, 3500));
 
       console.log("onSubmit bro...");
-
-      console.log("loading >> ", context.get("loading"));
     },
-    onClose: function (args) {
+
+    onClose(args) {
       const button = args.object;
 
       const newData = { action: "close", ...button.bindingContext };
       button.closeBottomSheet(newData);
     },
-  }); */
-  // page.bindingContext = context;
-  page.bindingContext = new KtpCheckerModel();
-}
-
-/* export function onLoaded(args) {
-  const page = args.object;
-  context = fromObject({
-    loading: false,
   });
-  page.bindingContext = context;
 }
-
-export function onSubmit(args) {
-  const button = args.object;
-
-  context.set("loading", true);
-
-  setTimeout(() => {
-    context.set("loading", false);
-  }, 3000);
-
-  console.log("onSubmit bro...");
-  const newData = { action: "submit", ...button.bindingContext };
-  button.closeBottomSheet(newData);
-}
-
-export function onClose(args) {
-  const button = args.object;
-
-  const newData = { action: "close", ...button.bindingContext };
-  button.closeBottomSheet(newData);
-}
- */

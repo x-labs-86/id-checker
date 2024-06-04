@@ -9,7 +9,7 @@
         <Label text="Home" />
     </ActionBar> -->
 
-    <GridLayout rows="auto,*, auto">
+    <GridLayout rows="auto, auto,*, auto">
         <GridLayout rows="10, auto, 10" columns="auto, *, auto, auto" row="0">
             <Image src="~/assets/logo.png" height="50" row="1" col="0" />
             <Label text="ID CheckER" fontSize="18" fontWeight="bold" row="1" col="1" />
@@ -23,7 +23,10 @@
             </Label>
             <Label text="&#xf129;" class="fas border" fontSize="18" marginRight="10" padding="5 15 5 15" row="1" col="3" />
         </GridLayout>
-        <lv:RadListView items="{{ menus }}" itemTap="onItemTap" row="1">
+        <StackLayout visibility="{{ isConnected ? 'visible' : 'collapsed' }}" row="1">
+            <Label text="Tidak ada koneksi internet!" color="red" />
+        </StackLayout>
+        <lv:RadListView items="{{ menus }}" itemTap="onItemTap" row="2">
             <lv:RadListView.listViewLayout>
                 <lv:ListViewGridLayout spanCount="1" />
             </lv:RadListView.listViewLayout>
@@ -35,33 +38,6 @@
                 </GridLayout>
             </lv:RadListView.itemTemplate>
         </lv:RadListView>
-        <!-- <ListView row="1" items="{{ menus }}" itemTap="onItemTap" separatorColor="#FFFFFF">
-            <ListView.itemTemplate>
-                <GridLayout class="list-group-item" columns="auto, *" rows="auto,auto">
-                    <Label text="{{ icon }}" textWrap="true" class="{{ class }}" fontSize="32" col="0" row="0" rowSpan="2" />
-                    <Label text="{{ name }}" textWrap="true" col="1" row="0" />
-                    <Label text="{{ description }}" textWrap="true" col="1" row="2" />
-                </GridLayout>
-            </ListView.itemTemplate>
-        </ListView>  -->
-        <!-- <lv:RadListView row="1" items="{{ menus }}">
-            <lv:RadListView.listViewLayout>
-                <lv:ListViewLinearLayout scrollDirection="Horizontal" />
-            </lv:RadListView.listViewLayout>
-            <lv:RadListView.itemTemplate>
-                <GridLayout 
-                    class="table"
-                    height="100%" 
-                    width="100%" 
-                    columns="*, auto, auto, auto, auto, *"
-                    rows="auto, auto, auto, auto, *" />
-            </lv:RadListView.itemTemplate>
-            <lv:RadListView.itemTemplate>
-                <Label row="{{ row }}" col="{{ col }}" text="{{ name }}" />
-            </lv:RadListView.itemTemplate>
-        </lv:RadListView> -->
-        <!-- <StackLayout row="2">
-            <Button text="Show Bottom Sheet" tap="showBottomSheet" />
-        </StackLayout> -->
+        
     </GridLayout>
 </Page>
