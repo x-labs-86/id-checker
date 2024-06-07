@@ -2,31 +2,8 @@
     loaded="onLoaded" 
     actionBarHidden="true"
     class="page dark">
-    <GridLayout rows="auto, auto" padding="16" class="border" >
-        <GridLayout 
-            rows="auto, auto" 
-            columns="*, auto" 
-            row="0" 
-            visibility="{{ !isResult ? 'visible' : 'collapsed' }}">
-            <Label text="KTP Checker" row="0" col="0" fontSize="18" />
-            <Button text="X" tap="{{ onClose }}" row="0" col="1" width="50" background="#000" color="#FFF" />
-            <StackLayout row="1" col="0" colSpan="2">
-                <Label text="NIK" marginLeft="20" fontWeight="bold" marginTop="10" />
-                <TextField text="{{ nik }}" hint="NIK" color="#FFF" placeholderColor="#FFF" />
-                <StackLayout orientation="horizontal" horizontalAlignment="center" visibility="{{ loading ? 'visible' : 'collapsed' }}">
-                    <ActivityIndicator busy="true" color="#FFF" />
-                    <Label text="&nbsp;Checking process..." />
-                </StackLayout>
-                <Button text="Check" tap="{{ onSubmit }}" background="#FFF" color="#000" visibility="{{ !loading ? 'visible' : 'collapsed' }}" />
-                <Label textWrap="true" fontSize="16" marginTop="25" color="#F44336">
-                    <FormattedString>
-                        <Span text="DISCLAIMER : " fontWeight="900" />
-                        <Span text="kami tidak melakukan Collect Data sedikitpun, semua NIK yang kamu input disini tidak kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing pengguna, dan data dapat dihapus kapanpun pengguna mau." fontStyle="italic" />
-                    </FormattedString>
-                </Label>
-            </StackLayout>
-        </GridLayout>
-        <GridLayout rows="auto,0,*,10,auto" columns="*,auto" row="1" visibility="{{ isResult ? 'visible' : 'collapsed' }}">
+    <GridLayout rows="auto" padding="16" class="border" >
+        <GridLayout rows="auto,0,*,10,auto" columns="*,auto" row="0">
             <Label textWrap="true" row="0" col="0" fontSize="18">
                 <FormattedString>
                     <Span text="{{ valid ? '&#xf058;' : '&#xf057;' }}" class="fas" color="{{ valid ? '#4CAF50' : '#F44336' }}" />

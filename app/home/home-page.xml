@@ -1,43 +1,28 @@
 <Page 
     loaded="onLoaded" 
     navigatingTo="onNavigatingTo" 
-    xmlns="http://schemas.nativescript.org/tns.xsd" 
-    xmlns:lv="nativescript-ui-listview"
-    actionBarHidden="true"
-    class="dark">
-    <!-- <ActionBar>
-        <Label text="Home" />
-    </ActionBar> -->
-
-    <GridLayout rows="auto, auto,*, auto">
-        <GridLayout rows="10, auto, 10" columns="auto, *, auto, auto" row="0">
-            <Image src="~/assets/logo.png" height="50" row="1" col="0" />
-            <Label text="ID CheckER" fontSize="18" fontWeight="bold" row="1" col="1" />
-            
-            <Label textWrap="true" fontSize="18" marginRight="15" class="border" padding="5 15 5 15" row="1" col="2">
-                <FormattedString>
-                    <Span text="&#xf1da;" class="fas" />
-                    <Span text="&nbsp;&nbsp;" />
-                    <Span text="3" />
-                </FormattedString>
-            </Label>
-            <Label text="&#xf129;" class="fas border" fontSize="18" marginRight="10" padding="5 15 5 15" row="1" col="3" />
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    actionBarHidden="false"
+    flat="true">
+    <ActionBar>
+        <GridLayout columns="auto, auto, *">
+            <Label text="ID CheckER" fontSize="20" fontWeight="bold" col="0" />
+            <Label text="&#xf111;" class="fas" fontSize="12" color="{{ isConnected ? '#4CAF50' : '#F44336' }}" col="1" />
         </GridLayout>
-        <StackLayout visibility="{{ isConnected ? 'visible' : 'collapsed' }}" row="1">
-            <Label text="Tidak ada koneksi internet!" color="red" />
+        <ActionItem icon="font://&#xf1da;" class="fas" fontSize="24" android.position="actionBar" />
+        <ActionItem text="about" android.position="popup" />
+    </ActionBar>
+
+    <GridLayout rows="25, *, auto,auto, 20, auto, *, auto, 25">
+        <Image src="~/assets/logo.png" height="100" row="1" />
+        <TextField hint="Masukan NIK kamu..." text="{{ nik }}" keyboardType="number" class="input" row="2" />
+        <StackLayout row="3">
+            <Button text="Cek Sekarang" class="btn" tap="checkNow" />
         </StackLayout>
-        <lv:RadListView items="{{ menus }}" itemTap="onItemTap" row="2">
-            <lv:RadListView.listViewLayout>
-                <lv:ListViewGridLayout spanCount="1" />
-            </lv:RadListView.listViewLayout>
-            <lv:RadListView.itemTemplate>
-                <GridLayout rows="auto,auto" columns="auto, *" class="border" margin="5" padding="10">
-                    <Label row="0" col="0" text="{{ icon }}" class="{{ class }}" fontSize="32" />
-                    <Label row="0" col="1" text="{{ name }}" fontSize="18" textWrap="true" />
-                    <Label row="1" col="0" colSpan="2" text="{{ description }}" fontSize="16" textWrap="true" />
-                </GridLayout>
-            </lv:RadListView.itemTemplate>
-        </lv:RadListView>
-        
+        <StackLayout padding="0 20 0 20"  row="5">
+            <Label text="DISCLAIMER : " fontWeight="900" textWrap="true" fontSize="16" />
+            <Label text="kami tidak melakukan Collect Data sedikitpun, semua NIK yang kamu input disini tidak kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing pengguna, dan data dapat dihapus kapanpun pengguna mau." fontStyle="italic" textWrap="true" fontSize="16" />
+        </StackLayout>
+        <Image src="~/assets/dev.png" height="20" row="7" />
     </GridLayout>
 </Page>

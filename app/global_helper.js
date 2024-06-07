@@ -29,7 +29,43 @@ export function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export function connectivity() {
+export function internet() {
+  const connectionType = Connectivity.getConnectionType();
+  switch (connectionType) {
+    case Connectivity.connectionType.wifi:
+      return {
+        connected: true,
+        type: "wifi",
+      };
+    case Connectivity.connectionType.ethernet:
+      return {
+        connected: true,
+        type: "wifi",
+      };
+    case Connectivity.connectionType.mobile:
+      return {
+        connected: true,
+        type: "mobile",
+      };
+    case Connectivity.connectionType.bluetooth:
+      return {
+        connected: false,
+        type: "none",
+      };
+    case Connectivity.connectionType.vpn:
+      return {
+        connected: false,
+        type: "none",
+      };
+    default:
+      return {
+        connected: false,
+        type: "none",
+      };
+  }
+}
+
+/* export function monitorConnectivity() {
   let response = {
     connected: false,
     type: "none",
@@ -64,7 +100,7 @@ export function connectivity() {
   });
 
   return response;
-}
+} */
 
 export function replaceAll(str, find, replace) {
   var escapedFind = find.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
