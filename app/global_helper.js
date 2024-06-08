@@ -7,15 +7,16 @@ import { Http, Dialogs, Connectivity } from "@nativescript/core";
 import { SQL__query } from "~/sql_helper";
 
 export function init__tables() {
-  SQL__query(`CREATE TABLE IF NOT EXISTS "history" (
+  SQL__query(`CREATE TABLE "history" (
     "id"	INTEGER NOT NULL UNIQUE,
     "bg_color"	TEXT NOT NULL DEFAULT '#FFFFFF',
     "input"	TEXT NOT NULL,
     "service_type"	TEXT NOT NULL,
-    "response_type"	TEXT NOT NULL,
+    "response_type"	TEXT NOT NULL DEFAULT 'JSON',
     "response"	TEXT NOT NULL,
+    "checking_status"	INTEGER NOT NULL DEFAULT 0,
     "deleted"	INTEGER NOT NULL DEFAULT 0,
-    "deleted_date"	INTEGER DEFAULT NULL,
+    "deleted_date"	TEXT DEFAULT NULL,
     "created_date"	TEXT NOT NULL,
     PRIMARY KEY("id" AUTOINCREMENT)
   )`);
@@ -65,7 +66,7 @@ export function internet() {
   }
 }
 
-/* export function monitorConnectivity() {
+export function monitorConnectivity() {
   let response = {
     connected: false,
     type: "none",
@@ -100,7 +101,7 @@ export function internet() {
   });
 
   return response;
-} */
+}
 
 export function replaceAll(str, find, replace) {
   var escapedFind = find.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");

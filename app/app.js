@@ -1,6 +1,9 @@
 import { Application } from "@nativescript/core";
 import { Theme } from "@nativescript/theme";
+// import { installMixins } from "@nativescript-community/ui-material-core";
 import { install } from "@nativescript-community/ui-material-bottomsheet";
+
+// installMixins();
 install();
 
 Theme.setMode(Theme.Light);

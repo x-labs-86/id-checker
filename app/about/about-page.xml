@@ -4,7 +4,12 @@
     xmlns:ui="@nativescript/firebase-admob">
 
     <ActionBar>
-        <Label text="&#xf0eb;&nbsp;&nbsp;ABOUT" class="far"></Label>
+        <Label textWrap="true">
+            <FormattedString>
+                <Span text="&#xf0eb;" class="far" fontSize="16" />
+                <Span text="&nbsp;Tentang" fontSize="16" />
+            </FormattedString>
+        </Label>
         <ActionItem tap="openUrl" text="Blog" url="https://www.kang-cahya.com" android.position="popup" />
         <ActionItem tap="openUrl" text="Github" url="https://github.com/dyazincahya" android.position="popup" />
         <ActionItem tap="openUrl" text="Official Site" url="https://x-labs.my.id" android.position="popup" />

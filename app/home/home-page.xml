@@ -5,24 +5,53 @@
     actionBarHidden="false"
     flat="true">
     <ActionBar>
-        <GridLayout columns="auto, auto, *">
-            <Label text="ID CheckER" fontSize="20" fontWeight="bold" col="0" />
-            <Label text="&#xf111;" class="fas" fontSize="12" color="{{ isConnected ? '#4CAF50' : '#F44336' }}" col="1" />
+        <GridLayout columns="auto, *">
+            <Label textWrap="true" col="0">
+                <FormattedString>
+                    <Span text="&#xf111;" class="fas" fontSize="12" color="{{ isConnected ? '#4CAF50' : '#F44336' }}" />
+                    <Span text="&nbsp;&nbsp;" />
+                    <Span text="{{ isConnected ? 'online' : 'offline' }}" fontSize="16" />
+                </FormattedString>
+            </Label>
         </GridLayout>
-        <ActionItem icon="font://&#xf1da;" class="fas" fontSize="24" android.position="actionBar" />
-        <ActionItem text="about" android.position="popup" />
+        <!-- <ActionItem icon="font://&#xf1da;" class="fas" fontSize="24" android.position="actionBar" /> -->
+        <ActionItem text="Tentang Aplikasi" android.position="popup" tap="goToAbout" />
     </ActionBar>
 
-    <GridLayout rows="25, *, auto,auto, 20, auto, *, auto, 25">
-        <Image src="~/assets/logo.png" height="100" row="1" />
-        <TextField hint="Masukan NIK kamu..." text="{{ nik }}" keyboardType="number" class="input" row="2" />
+    <GridLayout rows="45, *, auto, auto, 20, auto, *, auto, 20" swipe="onSwipe">
+        <StackLayout horizontalAlignment="center" row="1">
+            <Image src="~/assets/logo.png" height="100" />
+            <Label text="ID CheckER" fontSize="20" fontWeight="900" marginTop="4" />
+            <Image src="~/assets/dev.png" height="12" marginTop="5" />
+        </StackLayout>
+        <TextField hint="Masukan NIK KTP kamu" text="{{ nik }}" keyboardType="number" class="input" row="2" />
         <StackLayout row="3">
-            <Button text="Cek Sekarang" class="btn" tap="checkNow" />
+            <StackLayout orientation="horizontal" horizontalAlignment="center" visibility="{{ loading ? 'visible' : 'collapsed' }}">
+                <ActivityIndicator busy="true" height="40" width="40" color="#000000" visibility="{{ loadingMessage != 'PENGECEKAN SELESAI' ? 'visible' : 'collapsed' }}" />
+                <Label text="{{ '&nbsp;&nbsp;' + loadingMessage }}" textWrap="true" fontSize="16" color="{{ loadingMessage == 'PENGECEKAN SELESAI' ? '#4CAF50' : '#000000' }}" />
+            </StackLayout>
+            <Label textWrap="true" color="#F44336" horizontalAlignment="center" margin="10 0" visibility="{{ isLostConnectionMessage ? 'visible' : 'collapsed' }}">
+                <FormattedString>
+                    <Span text="&#xe560;" class="fas" fontSize="20" />
+                    <Span text="&nbsp;&nbsp;" />
+                    <Span text="Sedang tidak terhubung ke internet!" fontSize="16" />
+                </FormattedString>
+            </Label>
+            <Button text="Cek Sekarang" class="btn" tap="checkNow" padding="0 25 0 25" horizontalAlignment="center" visibility="{{ !loading ? 'visible' : 'collapsed' }}" />
         </StackLayout>
-        <StackLayout padding="0 20 0 20"  row="5">
+        <StackLayout padding="0 20 0 20" row="5">
             <Label text="DISCLAIMER : " fontWeight="900" textWrap="true" fontSize="16" />
-            <Label text="kami tidak melakukan Collect Data sedikitpun, semua NIK yang kamu input disini tidak kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing pengguna, dan data dapat dihapus kapanpun pengguna mau." fontStyle="italic" textWrap="true" fontSize="16" />
+            <Label text="Kami tidak melakukan Collect Data sedikitpun, semua NIK KTP yang Kamu input disini tidak Kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing Pengguna, dan data dapat dihapus kapanpun Pengguna mau." fontStyle="italic" textWrap="true" fontSize="16" />
         </StackLayout>
-        <Image src="~/assets/dev.png" height="20" row="7" />
+        <StackLayout margin="0 20" row="7" tap="goToHistory">
+            <Label textWrap="true" color="#000" horizontalAlignment="center">
+                <FormattedString>
+                    <Span text="&#xf1da;" class="fas" fontSize="18" />
+                    <Span text="&nbsp;Riwayat" fontSize="18" />
+                </FormattedString>
+            </Label>
+            <Label text=" Tap disini atau Swipe Up" textWrap="true" color="#000" horizontalAlignment="center" />
+            <Label text="&#xf078;" textWrap="true" class="fas bounce-text" horizontalAlignment="center" fontSize="24" />
+        </StackLayout>
     </GridLayout>
 </Page>

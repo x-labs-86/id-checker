@@ -1,0 +1,44 @@
+<Page
+    loaded="onLoaded" 
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    actionBarHidden="true"
+    flat="true">
+
+    <!-- <ActionBar>
+        <Label textWrap="true">
+            <FormattedString>
+                <Span text="&#xf1da;" class="fas" fontSize="16" />
+                <Span text="&nbsp;Riwayat" fontSize="16" />
+            </FormattedString>
+        </Label>
+        <ActionItem tap="refreshTap" text="Refresh this page" android.position="popup" />
+        <ActionItem tap="clearTap" text="Clear all history" android.position="popup" />
+    </ActionBar> -->
+
+    <GridLayout rows="25,auto,auto,auto" height="100%" swipe="onSwipe">
+        <StackLayout margin="0 20" row="1" tap="goToHome">
+            <Label text="&#xf077;" textWrap="true" class="fas bounce-text" horizontalAlignment="center" fontSize="24" />
+            <Label text=" Tap disini atau Swipe Down" textWrap="true" color="#000" horizontalAlignment="center" />
+            <Label textWrap="true" color="#000" horizontalAlignment="center">
+                <FormattedString>
+                    <Span text="&#xe3af;" class="fas" fontSize="18" />
+                    <Span text="&nbsp;Home" fontSize="18" />
+                </FormattedString>
+            </Label>
+        </StackLayout>
+        <ListView row="2" height="100%" items="{{ items }}" itemTap="onItemTap" separatorColor="#000000" class="list-group" visibility="{{ items ? 'visible' : 'collapsed' }}">
+            <ListView.itemTemplate>
+                <StackLayout>
+                    <Label text="{{ input }}" textWrap="true" color="{{ response__valid ? '#4CAF50' : '#F44336' }}" />
+                    <Label text="{{ response__kabupaten_kota }}" textWrap="true" />
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView> 
+        <GridLayout rows="auto,auto,auto,auto,*" marginTop="100" row="3" class="page__content" visibility="{{ !items ? 'visible' : 'collapsed' }}">
+            <Label row="1" text="&#xf07c;" class="far" fontSize="32" color="#616161" horizontalAlignment="center" />
+            <Label row="2" text="Tidak ada data!" fontSize="24" color="#616161" horizontalAlignment="center" />
+            <Button row="3" tap="refreshTap" text="Refresh" width="100" />
+        </GridLayout>
+    </GridLayout>
+</Page>
