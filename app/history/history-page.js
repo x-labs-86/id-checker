@@ -1,5 +1,6 @@
 import { GlobalModel } from "~/global_model";
 import { loadMyAdMob } from "~/global_helper";
+import { parseNik } from "~/libs/parsenik";
 import {
   ObservableArray,
   ApplicationSettings,
@@ -92,6 +93,18 @@ export function onItemTap(args) {
   let itemIndex = args.index;
   let itemTap = args.view;
   let itemTapData = itemTap.bindingContext;
+
+  const page = args.object.page;
+  let dataNik = parseNik(parseInt(itemTapData.response__nik));
+
+  page.showBottomSheet({
+    view: "~/bottom-sheet/ktp-checker/ktp-checker",
+    context: {
+      nik: itemTapData.response__nik,
+      ...dataNik,
+    },
+    closeCallback: (args) => {},
+  });
 
   /* const actionOptions = {
     title: "Actions for " + itemTapData.phone,

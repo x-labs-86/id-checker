@@ -84,10 +84,10 @@ This is where the vast majority of your CSS code goes. */
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-10px);
+    transform: translateY(-10);
   }
   60% {
-    transform: translateY(-5px);
+    transform: translateY(-5);
   }
 }
 
@@ -100,27 +100,28 @@ This is where the vast majority of your CSS code goes. */
 
 /* ABOUT PAGE CSS */
 .about {
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-bottom: 50px;
+  margin-left: 20;
+  margin-right: 20;
+  padding-bottom: 50;
 }
 
 .about .header {
-  font-size: 18px;
-  color: #40aeff;
-  padding-bottom: 10px;
-  border-bottom-width: 1px;
-  border-bottom-color: #40aeff;
+  font-size: 18;
+  font-weight: 900;
+  color: #000000;
+  padding-bottom: 10;
+  border-bottom-width: 1;
+  border-bottom-color: #000000;
   border-bottom-style: solid;
 }
 
 .about .title {
-  font-size: 20px;
-  color: #212121;
+  font-size: 20;
+  color: #424242;
 }
 
 .about .desc {
-  font-size: 13px;
+  font-size: 13;
   color: #616161;
 }
 
@@ -129,9 +130,9 @@ This is where the vast majority of your CSS code goes. */
   color: #ffffff;
   background-color: #34a853;
   border-width: 0;
-  border-radius: 25px;
-  margin-top: 10px;
-  height: 45px;
+  border-radius: 25;
+  margin-top: 10;
+  height: 45;
 }
 
 .about .report-button {
@@ -139,9 +140,9 @@ This is where the vast majority of your CSS code goes. */
   color: #ffffff;
   background-color: #ea4335 !important;
   border-width: 0;
-  border-radius: 25px;
-  margin-top: 10px;
-  height: 45px;
+  border-radius: 25;
+  margin-top: 10;
+  height: 45;
 }
 
 .btn-playstore {
@@ -149,6 +150,6 @@ This is where the vast majority of your CSS code goes. */
   color: #ffffff;
   background-color: #34a853;
   border-width: 0;
-  border-radius: 25px;
-  height: 45px;
+  border-radius: 25;
+  height: 45;
 }

@@ -17,13 +17,13 @@ export function onNavigatingTo(args) {
 
 export function rateNow() {
   Utils.openUrl(
-    "https://play.google.com/store/apps/details?id=com.kang.cahya.apps.whatsappsender"
+    "https://play.google.com/store/apps/details?id=com.kang.cahya.apps.idchecker"
   );
 }
 
 export function reportNow() {
   Utils.openUrl(
-    "mailto:kangcahyakeren@gmail.com?subject=Bugs Report - WA Sender Apps"
+    "mailto:kangcahyakeren@gmail.com?subject=Bugs Report - ID CheckER Apps"
   );
 }
 

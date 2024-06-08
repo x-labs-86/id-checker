@@ -19,11 +19,11 @@
     <GridLayout rows="25,auto,auto,auto" height="100%" swipe="onSwipe">
         <StackLayout margin="0 20" row="1" tap="goToHome">
             <Label text="&#xf077;" textWrap="true" class="fas bounce-text" horizontalAlignment="center" fontSize="24" />
-            <Label text=" Tap disini atau Swipe Down" textWrap="true" color="#000" horizontalAlignment="center" />
-            <Label textWrap="true" color="#000" horizontalAlignment="center">
+            <Label text=" Tap disini atau Swipe Down" textWrap="true" color="#616161" horizontalAlignment="center" />
+            <Label textWrap="true" color="#000" fontWeight="bold" horizontalAlignment="center">
                 <FormattedString>
-                    <Span text="&#xe3af;" class="fas" fontSize="18" />
-                    <Span text="&nbsp;Home" fontSize="18" />
+                    <Span text="&#xe3af;" class="fas" fontSize="14" />
+                    <Span text="&nbsp;Kembali ke home" fontSize="14" />
                 </FormattedString>
             </Label>
         </StackLayout>

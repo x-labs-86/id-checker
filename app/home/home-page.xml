@@ -44,13 +44,13 @@
             <Label text="Kami tidak melakukan Collect Data sedikitpun, semua NIK KTP yang Kamu input disini tidak Kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing Pengguna, dan data dapat dihapus kapanpun Pengguna mau." fontStyle="italic" textWrap="true" fontSize="16" />
         </StackLayout>
         <StackLayout margin="0 20" row="7" tap="goToHistory">
-            <Label textWrap="true" color="#000" horizontalAlignment="center">
+            <Label textWrap="true" color="#000" fontWeight="bold" horizontalAlignment="center">
                 <FormattedString>
                     <Span text="&#xf1da;" class="fas" fontSize="18" />
                     <Span text="&nbsp;Riwayat" fontSize="18" />
                 </FormattedString>
             </Label>
-            <Label text=" Tap disini atau Swipe Up" textWrap="true" color="#000" horizontalAlignment="center" />
+            <Label text=" Tap disini atau Swipe Up" textWrap="true" color="#616161" horizontalAlignment="center" />
             <Label text="&#xf078;" textWrap="true" class="fas bounce-text" horizontalAlignment="center" fontSize="24" />
         </StackLayout>
     </GridLayout>
