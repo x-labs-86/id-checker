@@ -67,7 +67,7 @@ This is where the vast majority of your CSS code goes. */
 }
 
 .btn {
-  height: 55;
+  height: 50;
   color: #fff;
   border-radius: 30;
   text-transform: uppercase;

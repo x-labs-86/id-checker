@@ -29,7 +29,7 @@
             <Label text="ID CheckER" fontSize="20" fontWeight="900" marginTop="4" />
             <Image src="~/assets/dev.png" height="12" marginTop="5" />
         </StackLayout>
-        <TextField hint="Masukan NIK KTP kamu" text="{{ nik }}" keyboardType="number" class="input" row="2" />
+        <TextField hint="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Masukan NIK KTP kamu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" text="{{ nik }}" keyboardType="number" class="input" horizontalAlignment="center" textAlignment="center" row="2" />
         <StackLayout row="3">
             <StackLayout orientation="horizontal" horizontalAlignment="center" visibility="{{ loading ? 'visible' : 'collapsed' }}">
                 <ActivityIndicator busy="true" height="40" width="40" color="#000000" visibility="{{ loadingMessage != 'PENGECEKAN SELESAI' ? 'visible' : 'collapsed' }}" />

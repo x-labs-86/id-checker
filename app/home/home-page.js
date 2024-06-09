@@ -29,7 +29,7 @@ export function onNavigatingTo(args) {
 
   context = model;
 
-  context.set("nik", "3471140209790001");
+  context.set("nik", ""); // 3471140209790001
   context.set("loading", false);
   context.set("loadingMessage", defaultLoadingMessage);
   context.set("isLostConnectionMessage", false);
@@ -75,7 +75,10 @@ export function checkNow(args) {
           });
           _sqliteInsert({
             input: context.get("nik"),
-            response: JSON.stringify(dataNik),
+            response: dataNik.valid
+              ? JSON.stringify(dataNik)
+              : JSON.stringify({}),
+            valid: dataNik.valid ? 1 : 0,
           });
         }, 1000);
       }, getRandomNumber(1000, 5000));
@@ -142,20 +145,21 @@ function _checkConnectivity() {
 
 function _sqliteInsert(data) {
   init__tables();
-  SQL__select("history").then((result) => {
-    if (result && result.length === 0) {
-      let dataInsert = [
-        { field: "input", value: data.input },
-        { field: "service_type", value: "KTP-CHECKER" },
-        { field: "response_type", value: "JSON" },
-        { field: "response", value: data.response },
-        { field: "checking_status", value: 1 },
-        { field: "created_date", value: getCurrentTime() },
-      ];
-
-      SQL__insert("history", dataInsert);
+  SQL__select("history", "*", "WHERE input='" + data.input + "'").then(
+    (result) => {
+      if (result && result.length === 0) {
+        let dataInsert = [
+          { field: "input", value: data.input },
+          { field: "service_type", value: "KTP-CHECKER" },
+          { field: "response_type", value: "JSON" },
+          { field: "response", value: data.response },
+          { field: "checking_status", value: data.valid },
+          { field: "created_date", value: getCurrentTime() },
+        ];
+        SQL__insert("history", dataInsert);
+      }
     }
-  });
+  );
 }
 
 function _loadXLabsApps() {

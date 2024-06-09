@@ -8,14 +8,14 @@
                 <FormattedString>
                     <Span text="{{ valid ? '&#xf058;' : '&#xf057;' }}" class="fas" color="{{ valid ? '#4CAF50' : '#F44336' }}" fontSize="20" />
                     <Span text="&nbsp;&nbsp;" />
-                    <Span text="{{ valid ? 'valid' : 'nik ' + nik + ' invalid' }}" fontSize="18" />
+                    <Span text="{{ valid ? 'valid' : nik  }}" fontSize="18" />
                 </FormattedString>
             </Label>
-            <Label text="&#x58;" tap="{{ onClose }}" class="fas" col="2" />
+            <Button text="&#x58;" tap="{{ onClose }}" class="fas" width="50" height="50" background="#000" color="#FFF" col="2" />
         </GridLayout>
     </ActionBar>
-    <GridLayout rows="auto" padding="16" class="border-light" >
-        <GridLayout rows="auto,0,*,10,auto" columns="*,auto" row="0">
+    <GridLayout rows="auto, auto" padding="16" class="border-light" >
+        <GridLayout rows="auto,0,*,10,auto" columns="*,auto" row="0" visibility="{{ valid ? 'visible' : 'collapsed' }}">
             <!-- <Label textWrap="true" row="0" col="0" fontSize="24">
                 <FormattedString>
                     <Span text="{{ valid ? '&#xf058;' : '&#xf057;' }}" class="fas" color="{{ valid ? '#4CAF50' : '#F44336' }}" />
@@ -110,14 +110,11 @@
                         <Span text=" <<< " fontWeight="900" />
                     </FormattedString>
                 </Label>
-                <!-- <Label textWrap="true" fontSize="16" marginTop="15" color="#F44336">
-                    <FormattedString>
-                        <Span text="DISCLAIMER : " fontWeight="900" />
-                        <Span text="kami tidak melakukan Collect Data sedikitpun, semua NIK yang kamu input disini tidak kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing pengguna, dan data dapat dihapus kapanpun pengguna mau." fontStyle="italic" />
-                    </FormattedString>
-                </Label> -->
             </StackLayout>
         </GridLayout>
+        <StackLayout row="1" visibility="{{ !valid ? 'visible' : 'collapsed' }}">
+            <Label text="invalid atau tidak ditemukan" fontSize="18" textWrap="true" color="#F44336" />
+        </StackLayout>
     </GridLayout>
 </Page>
 

@@ -10,7 +10,7 @@
                     <Span text="&nbsp;&nbsp;Tentang Aplikasi" fontSize="16" />
                 </FormattedString>
             </Label>
-            <Label text="&#x58;" textWrap="true" class="fas" tap="{{ onClose }}" col="2" />
+            <Button text="&#x58;" textWrap="true" class="fas" tap="{{ onClose }}" width="50" height="50" background="#000" color="#FFF" col="2" />
         </GridLayout>
         <!-- <ActionItem tap="openUrl" text="Blog" url="https://www.kang-cahya.com" android.position="popup" />
         <ActionItem tap="openUrl" text="Github" url="https://github.com/dyazincahya" android.position="popup" />

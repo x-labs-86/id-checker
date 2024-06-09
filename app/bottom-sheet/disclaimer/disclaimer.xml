@@ -7,12 +7,8 @@
                     <Span text="&nbsp;&nbsp;Disclaimer &amp; Info Lainnya" fontSize="16" />
                 </FormattedString>
             </Label>
-            <Label text="&#x58;" textWrap="true" class="fas" tap="{{ onClose }}" col="2" />
+            <Button text="&#x58;" textWrap="true" class="fas" tap="{{ onClose }}" width="50" height="50" background="#000" color="#FFF" col="2" />
         </GridLayout>
-        <!-- <ActionItem tap="openUrl" text="Blog" url="https://www.kang-cahya.com" android.position="popup" />
-        <ActionItem tap="openUrl" text="Github" url="https://github.com/dyazincahya" android.position="popup" />
-        <ActionItem tap="openUrl" text="Official Site" url="https://x-labs.my.id" android.position="popup" />
-        <ActionItem tap="openUrl" text="Developer Page" url="https://play.google.com/store/apps/dev?id=8941046243892038548" android.position="popup" /> -->
     </ActionBar>
     <StackLayout padding="20">
         <Label text="DISCLAIMER" fontWeight="900" textWrap="true" fontSize="16" />

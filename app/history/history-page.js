@@ -43,7 +43,8 @@ export function __loadDataSqlite() {
         // dataHistorySqlite.push(item);
         if (
           item.response_type === "JSON" &&
-          item.service_type === "KTP-CHECKER"
+          item.service_type === "KTP-CHECKER" &&
+          item.checking_status === 1
         ) {
           const response = JSON.parse(item.response);
           // "{"nik":3471140209790001,"valid":true,"jenis_kelamin":"LAKI-LAKI","tanggal_lahir":"1979-09-02","provinsi":"DAERAH ISTIMEWA YOGYAKARTA","kabupaten_kota":"KOTA YOGYAKARTA","kecamatan":"KOTAGEDE","kodepos":"55171"}"
@@ -55,6 +56,15 @@ export function __loadDataSqlite() {
           item.response__kabupaten_kota = response.kabupaten_kota;
           item.response__kecamatan = response.kecamatan;
           item.response__kodepos = response.kodepos;
+        } else {
+          item.response__nik = item.input;
+          item.response__valid = false;
+          item.response__jenis_kelamin = "invalid atau tidak ditemukan";
+          item.response__tanggal_lahir = "invalid atau tidak ditemukan";
+          item.response__provinsi = "invalid atau tidak ditemukan";
+          item.response__kabupaten_kota = "invalid atau tidak ditemukan";
+          item.response__kecamatan = "invalid atau tidak ditemukan";
+          item.response__kodepos = "invalid atau tidak ditemukan";
         }
         return item;
       });
