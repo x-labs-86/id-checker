@@ -1,3 +1,4 @@
+import { ApplicationSettings, Utils } from "@nativescript/core";
 import { GlobalModel } from "~/global_model";
 import {
   init__tables,
@@ -5,6 +6,7 @@ import {
   internet,
   getCurrentTime,
   loadMyAdMob,
+  myHttpClient,
 } from "~/global_helper";
 import { parseNik } from "~/libs/parsenik";
 import { SQL__select, SQL__insert, SQL__truncate } from "~/sql_helper";
@@ -31,8 +33,8 @@ export function onNavigatingTo(args) {
   context.set("loading", false);
   context.set("loadingMessage", defaultLoadingMessage);
   context.set("isLostConnectionMessage", false);
-  // SQL__truncate("history");
   _checkConnectivity();
+  _loadXLabsApps();
 
   page.bindingContext = context;
 }
@@ -69,16 +71,7 @@ export function checkNow(args) {
               nik: context.nik,
               ...dataNik,
             },
-            closeCallback: (args) => {
-              // if (args.action == "submit") {
-              //   let x = parseNik(parseInt(args.nik));
-              //   console.log("x >>> ", x);
-              // }
-              // context.set("nik", "");
-              console.log("Close Callback", args);
-              // console.log("Close Callback action", args.action);
-              // console.log("Bottom Sheet closed");
-            },
+            closeCallback: (args) => {},
           });
           _sqliteInsert({
             input: context.get("nik"),
@@ -94,23 +87,8 @@ export function checkNow(args) {
   }, timeToCheckConnection);
 }
 
-export function showBottomSheet(args) {
-  const page = args.object.page;
-  const modalViewModulets = "~/bottom-sheet/bottom-sheet";
-  page.showBottomSheet({
-    view: modalViewModulets,
-    context: { name: "kang cahya" },
-    closeCallback: (args) => {
-      console.log("Close Callback", args);
-      console.log("Bottom Sheet closed");
-    },
-  });
-}
-
 export function onSwipe(args) {
-  // console.log("onSwipe", args);
   if (args.direction === 4) {
-    console.log("swipe up");
     goToHistory();
   }
 }
@@ -123,12 +101,35 @@ export function goToHistory() {
   });
 }
 
-export function goToAbout() {
-  framePage.navigate({
-    moduleName: "about/about-page",
-    animated: true,
-    transition: { name: "fade" },
+export function openAbout(args) {
+  const page = args.object.page;
+
+  _loadXLabsApps();
+
+  const bottomSheetContext = {
+    items: context.appItems,
+    heightListView: context.appHeightListView,
+  };
+
+  page.showBottomSheet({
+    view: "~/bottom-sheet/about/about",
+    context: bottomSheetContext,
+    closeCallback: (args) => {},
   });
+}
+
+export function openDisclaimer(args) {
+  const page = args.object.page;
+
+  page.showBottomSheet({
+    view: "~/bottom-sheet/disclaimer/disclaimer",
+  });
+}
+
+export function openUrl(args) {
+  if (args.object && args.object.url) {
+    Utils.openUrl(args.object.url);
+  }
 }
 
 function _checkConnectivity() {
@@ -141,9 +142,6 @@ function _checkConnectivity() {
 
 function _sqliteInsert(data) {
   init__tables();
-
-  console.log(data);
-
   SQL__select("history").then((result) => {
     if (result && result.length === 0) {
       let dataInsert = [
@@ -157,6 +155,29 @@ function _sqliteInsert(data) {
 
       SQL__insert("history", dataInsert);
     }
-    console.log("history >>> ", result);
   });
+}
+
+function _loadXLabsApps() {
+  const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+  const lastFetchDate = ApplicationSettings.getString("lastFetchDate", "");
+  const cachedData = ApplicationSettings.getString("cachedData", "");
+
+  if (lastFetchDate === today && cachedData) {
+    const data = JSON.parse(cachedData);
+    context.set("appHeightListView", (data.length + 1) * 80);
+    context.set("appItems", data);
+  } else {
+    myHttpClient("https://x-labs.my.id/api/apps", "GET").then((res) => {
+      if (res && res.data.length) {
+        context.set("appHeightListView", (res.data.length + 1) * 80);
+        context.set("appItems", res.data);
+        ApplicationSettings.setString("lastFetchDate", today);
+        ApplicationSettings.setString("cachedData", JSON.stringify(res.data));
+      } else {
+        context.set("appHeightListView", 80);
+        context.set("appItems", false);
+      }
+    });
+  }
 }

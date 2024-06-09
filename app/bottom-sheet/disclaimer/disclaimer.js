@@ -7,10 +7,7 @@ export function onLoaded(args) {
     ...args.context,
     onClose: function (args) {
       const button = args.object;
-      console.log("contextData", button);
-      button.closeBottomSheet({
-        web: "kang-cahya.com",
-      });
+      button.closeBottomSheet({});
     },
   };
   const context = fromObject(contextData);

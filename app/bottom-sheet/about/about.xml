@@ -1,19 +1,21 @@
 <Page
-    navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd"
-    xmlns:ui="@nativescript/firebase-admob">
+    loaded="onLoaded" 
+    actionBarHidden="false">
 
     <ActionBar>
-        <Label textWrap="true">
-            <FormattedString>
-                <Span text="&#xf0eb;" class="far" fontSize="16" />
-                <Span text="&nbsp;Tentang" fontSize="16" />
-            </FormattedString>
-        </Label>
-        <ActionItem tap="openUrl" text="Blog" url="https://www.kang-cahya.com" android.position="popup" />
+        <GridLayout columns="auto, *, auto">
+            <Label textWrap="true" col="0">
+                <FormattedString>
+                    <Span text="&#xf0eb;" class="far" fontSize="16" />
+                    <Span text="&nbsp;&nbsp;Tentang Aplikasi" fontSize="16" />
+                </FormattedString>
+            </Label>
+            <Label text="&#x58;" textWrap="true" class="fas" tap="{{ onClose }}" col="2" />
+        </GridLayout>
+        <!-- <ActionItem tap="openUrl" text="Blog" url="https://www.kang-cahya.com" android.position="popup" />
         <ActionItem tap="openUrl" text="Github" url="https://github.com/dyazincahya" android.position="popup" />
         <ActionItem tap="openUrl" text="Official Site" url="https://x-labs.my.id" android.position="popup" />
-        <ActionItem tap="openUrl" text="Developer Page" url="https://play.google.com/store/apps/dev?id=8941046243892038548" android.position="popup" />
+        <ActionItem tap="openUrl" text="Developer Page" url="https://play.google.com/store/apps/dev?id=8941046243892038548" android.position="popup" /> -->
     </ActionBar>
 
     <ScrollView height="100%" width="100%" orientation="vertical" marginTop="30">
@@ -22,47 +24,47 @@
             <Label textWrap="true" class="header">
                 <FormattedString>
                     <Span text="&#xf2bb;" class="far" />
-                    <Span text="&nbsp;This App" />
+                    <Span text="&nbsp;Informasi" />
                 </FormattedString>
             </Label>
 
-            <Label text="Name" textWrap="true" class="title" marginTop="10" />
+            <Label text="Nama" textWrap="true" class="title" marginTop="10" />
             <Label text="ID CheckER - KTP" textWrap="true" class="desc" />
             
-            <Label text="Description" textWrap="true" class="title" marginTop="10" />
+            <Label text="Deskripsi" textWrap="true" class="title" marginTop="10" />
             <Label text="Cek dan validasi nomor KTP kamu disini. Aplikasi ini berfungsi hanya sebatas melakukan validasi NIK KTP saja, tidak lebih." textWrap="true" class="desc" />
             
-            <Label text="Version" textWrap="true" class="title" marginTop="10" />
+            <Label text="Versi" textWrap="true" class="title" marginTop="10" />
             <Label text="1.0.0 build 1" textWrap="true" class="desc" />
 
-            <Label text="Developer" textWrap="true" class="title" marginTop="10" />
+            <Label text="Pengembang" textWrap="true" class="title" marginTop="10" />
             <Image src="~/assets/dev.png" height="15" marginTop="5" horizontalAlignment="left" />
             <!-- <Label text="X-LABS.my.id" textWrap="true" class="desc" /> -->
 
             <Label textWrap="true" class="header" marginTop="35">
                 <FormattedString>
                     <Span text="&#xf5c2;" class="far" />
-                    <Span text="&nbsp;Feedback And Support" />
+                    <Span text="&nbsp;Umpan Balik dan Dukungan" />
                 </FormattedString>
             </Label>
 
             <GridLayout marginTop="10" columns="*,10,*">
                 <StackLayout col="0">
-                    <Label text="Give 5 Start" textWrap="true" class="title" />
-                    <Label text="Don't forget to give 5 star for this apps on Playstore" textWrap="true" class="desc" />
-                    <Button text="Rate Now" tap="rateNow" class="rate-button" />
+                    <Label text="Berikan Bintang 5" textWrap="true" class="title" />
+                    <Label text="Jangan lupa memberikan bintang 5 untuk aplikasi ini di Playstore" textWrap="true" class="desc" />
+                    <Button text="Beri Rating" tap="{{ rateNow }}" class="rate-button" />
                 </StackLayout>
                 <StackLayout col="2">
-                    <Label text="Bugs Report" textWrap="true" class="title" />
-                    <Label text="Don't forget report to us if you found a bugs on this apps" textWrap="true" class="desc" />
-                    <Button text="Report Now" tap="reportNow" class="report-button" />
+                    <Label text="Laporkan Bug" textWrap="true" class="title" />
+                    <Label text="Jangan lupa laporkan jika kamu menemukan Bugs di aplikasi ini" textWrap="true" class="desc" />
+                    <Button text="Laporkan" tap="{{ reportNow }}" class="report-button" />
                 </StackLayout>
             </GridLayout>
 
             <Label textWrap="true" class="header" marginTop="35">
                 <FormattedString>
                     <Span text="&#xf25d;" class="far" />
-                    <Span text="&nbsp;Credit" />
+                    <Span text="&nbsp;Kredit" />
                 </FormattedString>
             </Label>
 
@@ -78,11 +80,11 @@
             <Label textWrap="true" class="header" marginTop="35">
                 <FormattedString>
                     <Span text="&#xf3ab;" class="fab" />
-                    <Span text="&nbsp;Our other Apps" />
+                    <Span text="&nbsp;Aplikasi kami yang lain" />
                 </FormattedString>
             </Label>
 
-            <ListView height="{{ heightListView }}" items="{{ items }}" itemTap="onItemTap" separatorColor="#40aeff" class="list-group" marginTop="10" visibility="{{ items ? 'visible' : 'collapsed' }}">
+            <ListView height="{{ heightListView }}" items="{{ items }}" itemTap="{{ onItemTap }}" separatorColor="#40aeff" class="list-group" marginTop="10" visibility="{{ items ? 'visible' : 'collapsed' }}">
                 <ListView.itemTemplate>
                     <GridLayout class="list-group-item" rows="auto,auto,auto" columns="10, auto, 10, *, 10" tap="openUrl" url="{{ playstore_url }}">
                         <Image src="{{ icon_url }}" verticalAlignment="middle" height="45" row="0" rowSpan="2" col="1" />
@@ -93,9 +95,8 @@
                 </ListView.itemTemplate>
             </ListView> 
             <GridLayout rows="auto,auto,auto" marginTop="30" class="page__content" visibility="{{ !items ? 'visible' : 'collapsed' }}">
-                <Label row="0" class="page__content-icon fas" text="&#xf01c;"></Label>
-                <Label row="1" class="page__content-placeholder" text="No apps!"></Label>
-                <Button row="2" tap="refresh" text="Refresh" width="100" />
+                <Label row="0" class="fas" text="&#xf01c;" horizontalAlignment="center" />
+                <Label row="1" text="No apps!" horizontalAlignment="center" />
             </GridLayout>        
         </StackLayout>
     </ScrollView>

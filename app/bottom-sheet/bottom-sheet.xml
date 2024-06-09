@@ -1,8 +1,0 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="onLoaded" actionBarHidden="true" class="dark">
-    <GridLayout rows="auto,auto, *" padding="16" class="border">
-        <Label text="This is a Bottom Sheet" row="0" />
-        <TextField text="{{ name }}" color="#FFF" placeholderColor="#FFF" row="1" />
-        <Button text="Close" tap="{{ onClose }}" row="2" />
-    </GridLayout>
-</Page>
-

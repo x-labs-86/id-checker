@@ -15,7 +15,12 @@
             </Label>
         </GridLayout>
         <!-- <ActionItem icon="font://&#xf1da;" class="fas" fontSize="24" android.position="actionBar" /> -->
-        <ActionItem text="Tentang Aplikasi" android.position="popup" tap="goToAbout" />
+        <ActionItem tap="openUrl" text="Blog" url="https://www.kang-cahya.com" android.position="popup" />
+        <ActionItem tap="openUrl" text="Github" url="https://github.com/dyazincahya" android.position="popup" />
+        <ActionItem tap="openUrl" text="Official Site" url="https://x-labs.my.id" android.position="popup" />
+        <ActionItem tap="openUrl" text="Developer Page" url="https://play.google.com/store/apps/dev?id=8941046243892038548" android.position="popup" />
+        <ActionItem text="Disclaimer &amp; Info Lainnya" android.position="popup" tap="openDisclaimer" />
+        <ActionItem text="Tentang Aplikasi" android.position="popup" tap="openAbout" />
     </ActionBar>
 
     <GridLayout rows="45, *, auto, auto, 20, auto, *, auto, 20" swipe="onSwipe">
@@ -39,9 +44,16 @@
             </Label>
             <Button text="Cek Sekarang" class="btn" tap="checkNow" padding="0 25 0 25" horizontalAlignment="center" visibility="{{ !loading ? 'visible' : 'collapsed' }}" />
         </StackLayout>
-        <StackLayout padding="0 20 0 20" row="5">
-            <Label text="DISCLAIMER : " fontWeight="900" textWrap="true" fontSize="16" />
-            <Label text="Kami tidak melakukan Collect Data sedikitpun, semua NIK KTP yang Kamu input disini tidak Kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing Pengguna, dan data dapat dihapus kapanpun Pengguna mau." fontStyle="italic" textWrap="true" fontSize="16" />
+        <StackLayout tap="openDisclaimer" padding="0 20 0 20" horizontalAlignment="center" row="5">
+            <Label textWrap="true">
+                <FormattedString>
+                    <Span text="&#xf212;" class="fab" fontSize="18" />
+                    <Span text="&nbsp;Disclaimer &amp; Info Lainnya" fontSize="15" />
+                </FormattedString>
+            </Label>
+            <!-- <Label text="&#x58;" textWrap="true" class="fas" tap="openDisclaimer" />
+            <Label text="DISCLAIMER" fontWeight="900" textWrap="true" fontSize="16" horizontalAlignment="center" />
+            <Label text="Kami tidak melakukan Collect Data sedikitpun, semua NIK KTP yang Kamu input disini tidak Kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing Pengguna, dan data dapat dihapus kapanpun Pengguna mau." fontStyle="italic" textWrap="true" fontSize="16" textAlignment="center" /> -->
         </StackLayout>
         <StackLayout margin="0 20" row="7" tap="goToHistory">
             <Label textWrap="true" color="#000" fontWeight="bold" horizontalAlignment="center">

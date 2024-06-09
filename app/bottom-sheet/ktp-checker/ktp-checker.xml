@@ -1,17 +1,29 @@
 <Page 
     loaded="onLoaded" 
-    actionBarHidden="true"
+    actionBarHidden="false"
     class="light">
+    <ActionBar>
+        <GridLayout columns="auto, *, auto">
+            <Label textWrap="true" col="0">
+                <FormattedString>
+                    <Span text="{{ valid ? '&#xf058;' : '&#xf057;' }}" class="fas" color="{{ valid ? '#4CAF50' : '#F44336' }}" fontSize="20" />
+                    <Span text="&nbsp;&nbsp;" />
+                    <Span text="{{ valid ? 'valid' : 'nik ' + nik + ' invalid' }}" fontSize="18" />
+                </FormattedString>
+            </Label>
+            <Label text="&#x58;" tap="{{ onClose }}" class="fas" col="2" />
+        </GridLayout>
+    </ActionBar>
     <GridLayout rows="auto" padding="16" class="border-light" >
         <GridLayout rows="auto,0,*,10,auto" columns="*,auto" row="0">
-            <Label textWrap="true" row="0" col="0" fontSize="24">
+            <!-- <Label textWrap="true" row="0" col="0" fontSize="24">
                 <FormattedString>
                     <Span text="{{ valid ? '&#xf058;' : '&#xf057;' }}" class="fas" color="{{ valid ? '#4CAF50' : '#F44336' }}" />
                     <Span text="&nbsp;&nbsp;" />
                     <Span text="{{ valid ? 'valid' : 'nik ' + nik + ' invalid' }}" />
                 </FormattedString>
             </Label>
-            <Button text="&#x58;" tap="{{ onClose }}" class="fas" row="0" col="1" width="50" fontSize="18" background="#FFF" color="#000" />
+            <Label text="&#x58;" tap="{{ onClose }}" class="fas" row="0" col="1" width="50" fontSize="18" background="#FFF" color="#000" /> -->
             <ScrollView row="2" col="0" colSpan="2" orientation="horizontal" visibility="{{ valid ? 'visible' : 'collapsed' }}">
                 <GridLayout rows="auto,10,auto" columns="*,10,auto" class="ktp-background" color="#000" padding="10 20 10 20" borderRadius="10">
                     <StackLayout row="0" col="0" colSpan="3" >
@@ -29,7 +41,7 @@
 
                         <Label text="Nama" row="3" col="0" fontSize="11" />
                         <Label text=":" row="3" col="1" fontSize="11" />
-                        <Label text="&#xf023; sensor" class="fas" row="3" col="2" fontSize="10" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" row="3" col="2" fontSize="8" />
                         
                         <Label text="Tempat/Tgl Lahir" row="4" col="0" fontSize="11" />
                         <Label text=":" row="4" col="1" fontSize="11" />
@@ -42,21 +54,21 @@
                                 <Span text="{{ jenis_kelamin }}" fontSize="11" />
                                 <Span text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
                                 <Span text="Gol. Darah :&nbsp;"  fontSize="11" />
-                                <Span text="&#xf023; sensor" class="fas"  fontSize="10" />
+                                <Span text="&#xf023; &nbsp; sensor" class="fas"  fontSize="8" />
                             </FormattedString>
                         </Label>
                         
                         <Label text="Alamat" row="6" col="0" fontSize="11" />
                         <Label text=":" row="6" col="1" fontSize="11" />
-                        <Label text="&#xf023; sensor" class="fas" row="6" col="2" fontSize="10" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" row="6" col="2" fontSize="8" />
                         
                         <Label text="RT/RW" row="7" col="0" paddingLeft="23" fontSize="11" />
                         <Label text=":" row="7" col="1" fontSize="11" />
-                        <Label text="&#xf023; sensor" class="fas" row="7" col="2" fontSize="10" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" row="7" col="2" fontSize="8" />
                         
                         <Label text="Kel/Desa" row="8" col="0" paddingLeft="23" fontSize="11" />
                         <Label text=":" row="8" col="1" fontSize="11" />
-                        <Label text="&#xf023; sensor" class="fas" row="8" col="2" fontSize="10" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" row="8" col="2" fontSize="8" />
                         
                         <Label text="Kecamatan" row="9" col="0" paddingLeft="23" fontSize="11" />
                         <Label text=":" row="9" col="1" fontSize="11" />
@@ -64,15 +76,15 @@
                         
                         <Label text="Agama" row="10" col="0" fontSize="11" />
                         <Label text=":" row="10" col="1" fontSize="11" />
-                        <Label text="&#xf023; sensor" class="fas" row="10" col="2" fontSize="10" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" row="10" col="2" fontSize="8" />
                         
                         <Label text="Status Perkawinan" row="11" col="0" fontSize="11" />
                         <Label text=":" row="11" col="1" fontSize="11" />
-                        <Label text="&#xf023; sensor" class="fas" row="11" col="2" fontSize="10" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" row="11" col="2" fontSize="8" />
                         
                         <Label text="Pekerjaan" row="12" col="0" fontSize="11" />
                         <Label text=":" row="12" col="1" fontSize="11" />
-                        <Label text="&#xf023; sensor" class="fas" row="12" col="2" fontSize="10" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" row="12" col="2" fontSize="8" />
                         
                         <Label text="Kewarganegaraan" row="13" col="0" fontSize="11" />
                         <Label text=":" row="13" col="1" fontSize="11" />
@@ -83,18 +95,19 @@
                         <Label text="Seumur Hidup" row="14" col="2" fontSize="11" />
                     </GridLayout>
                     <GridLayout rows="auto,auto,auto,auto" row="2" col="2">
-                        <Label text="&nbsp; &#xf023; photo sensor" class="fas" fontSize="10" width="150" height="165" backgroundColor="#F44336" horizontalAlignment="center" row="0"  />
+                        <Label text="&nbsp; &#xf023; foto &nbsp; sensor" class="fas" fontSize="8" width="150" height="165" backgroundColor="#F44336" horizontalAlignment="center" row="0"  />
                         <Label text="{{ kabupaten_kota }}" horizontalAlignment="center" row="1" />
-                        <Label text="&#xf023; sensor" class="fas" fontSize="10" row="2" horizontalAlignment="center" />
-                        <Label text="&nbsp; &#xf023; signature sensor" class="fas" fontSize="10" width="150" height="38" backgroundColor="#FFF" marginTop="5" horizontalAlignment="center" row="3" />
+                        <Label text="&#xf023; &nbsp; sensor" class="fas" fontSize="8" row="2" horizontalAlignment="center" />
+                        <Label text="&nbsp; &#xf023; TTD &nbsp; sensor" class="fas" fontSize="8" width="150" height="38" backgroundColor="#FFF" marginTop="5" horizontalAlignment="center" row="3" />
                     </GridLayout>
                 </GridLayout>
             </ScrollView>
             <StackLayout row="4" col="0" colSpan="2" visibility="{{ valid ? 'visible' : 'collapsed' }}">
-                <Label textWrap="true" fontSize="16">
+                <Label textWrap="true" textAlignment="center">
                     <FormattedString>
-                        <Span text="INFO : " fontWeight="900" />
+                        <Span text="INFO >>> " fontWeight="900" />
                         <Span text="data disajikan dalam format terbatas, sebagian informasi disensor dikarenakan kami tidak ada kewenangan untuk membuka data secara lengkap. Untuk lebih lanjut bisa datang langsung ke kantor dukcapil terdekat atau kanal lainnya yang tersedia." fontStyle="italic" />
+                        <Span text=" <<< " fontWeight="900" />
                     </FormattedString>
                 </Label>
                 <!-- <Label textWrap="true" fontSize="16" marginTop="15" color="#F44336">

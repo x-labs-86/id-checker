@@ -98,6 +98,16 @@ This is where the vast majority of your CSS code goes. */
   animation-name: bounce;
 }
 
+.btn-danger {
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ea4335 !important;
+  border-width: 0;
+  border-radius: 25;
+  margin-top: 10;
+  height: 45;
+}
+
 /* ABOUT PAGE CSS */
 .about {
   margin-left: 20;

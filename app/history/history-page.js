@@ -38,7 +38,6 @@ export function onNavigatingTo(args) {
 export function __loadDataSqlite() {
   // dataHistorySqlite.splice(0);
   SQL__select("history", "*", "WHERE deleted=0").then((res) => {
-    // console.log("data sqlite >> ", res);
     if (res && res.length > 0) {
       res.map((item) => {
         // dataHistorySqlite.push(item);
@@ -80,7 +79,12 @@ export function clearTap() {
       SQL__truncate("history");
       // SQL__truncate("dataphone");
       __loadDataSqlite();
-      Dialogs.alert("Data riwayat berhasil dibersihkan :)");
+      Dialogs.alert({
+        title: "Info!",
+        message: "Data riwayat berhasil dibersihkan :)",
+        okButtonText: "Sip",
+        cancelable: true,
+      });
     }
   });
 }
@@ -166,9 +170,7 @@ export function onItemTap(args) {
 }
 
 export function onSwipe(args) {
-  // console.log("onSwipe", args);
   if (args.direction === 8) {
-    console.log("swipe down");
     goToHome();
   }
 }
