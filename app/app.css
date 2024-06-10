@@ -19,6 +19,18 @@ This is where the vast majority of your CSS code goes. */
   font-weight: 400;
 }
 
+.fa-rotate-90 {
+  transform: rotate(90deg) !important;
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg) !important;
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg) !important;
+}
+
 .dark {
   background-color: #000000 !important;
   color: #ffffff !important;
