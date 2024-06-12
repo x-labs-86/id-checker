@@ -1,4 +1,4 @@
-import { ApplicationSettings, Utils } from "@nativescript/core";
+import { ApplicationSettings, Utils, Dialogs } from "@nativescript/core";
 import { GlobalModel } from "~/global_model";
 import {
   init__tables,
@@ -21,7 +21,7 @@ export function onLoaded(args) {
 
   setTimeout(() => {
     loadMyAdMob();
-  }, 2000);
+  }, 1500);
 }
 
 export function onNavigatingTo(args) {
@@ -40,6 +40,16 @@ export function onNavigatingTo(args) {
 }
 
 export function checkNow(args) {
+  if (context.nik.length === 0) {
+    Dialogs.alert({
+      title: "Peringatan",
+      message: "Input NIK terlebih dahulu!",
+      okButtonText: "Tutup",
+      cancelable: true,
+    });
+    return;
+  }
+
   context.set("loading", true);
   _checkConnectivity();
 
@@ -58,7 +68,7 @@ export function checkNow(args) {
       context.set("loadingMessage", defaultLoadingMessage);
       context.set("isLostConnectionMessage", false);
       setTimeout(() => {
-        context.set("loadingMessage", "PENGECEKAN SELESAI");
+        context.set("loadingMessage", "Pengecekan Selesai");
 
         const page = args.object.page;
         let dataNik = parseNik(parseInt(context.nik));
@@ -80,6 +90,7 @@ export function checkNow(args) {
               : JSON.stringify({}),
             valid: dataNik.valid ? 1 : 0,
           });
+          context.set("nik", "");
         }, 1000);
       }, getRandomNumber(1000, 5000));
     } else {
@@ -133,6 +144,13 @@ export function openUrl(args) {
   if (args.object && args.object.url) {
     Utils.openUrl(args.object.url);
   }
+}
+
+export function bannerLoaded(args) {
+  const banner = args.object;
+
+  // console.log("banner loaded >>> ", args);
+  // banner.height = "auto";
 }
 
 function _checkConnectivity() {

@@ -1,12 +1,16 @@
 import { Application } from "@nativescript/core";
 import { Theme } from "@nativescript/theme";
-// import { installMixins } from "@nativescript-community/ui-material-core";
+import { firebase } from "@nativescript/firebase-core";
+import { Admob } from "@nativescript/firebase-admob";
 import { install } from "@nativescript-community/ui-material-bottomsheet";
 
 // installMixins();
 install();
 
 Theme.setMode(Theme.Light);
+await firebase().initializeApp();
+Admob.init();
+
 Application.run({ moduleName: "app-root" });
 
 /*

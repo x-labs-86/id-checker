@@ -3,7 +3,8 @@
     navigatingTo="onNavigatingTo" 
     xmlns="http://schemas.nativescript.org/tns.xsd"
     actionBarHidden="false"
-    flat="true">
+    flat="true"
+    xmlns:ui="@nativescript/firebase-admob">
     <ActionBar>
         <GridLayout columns="auto, *">
             <Label textWrap="true" col="0">
@@ -32,8 +33,13 @@
         <TextField hint="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Masukan NIK KTP kamu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" text="{{ nik }}" keyboardType="number" class="input" horizontalAlignment="center" textAlignment="center" row="2" />
         <StackLayout row="3">
             <StackLayout orientation="horizontal" horizontalAlignment="center" visibility="{{ loading ? 'visible' : 'collapsed' }}">
-                <ActivityIndicator busy="true" height="40" width="40" color="#000000" visibility="{{ loadingMessage != 'PENGECEKAN SELESAI' ? 'visible' : 'collapsed' }}" />
-                <Label text="{{ '&nbsp;&nbsp;' + loadingMessage }}" textWrap="true" fontSize="16" color="{{ loadingMessage == 'PENGECEKAN SELESAI' ? '#4CAF50' : '#000000' }}" />
+                <ActivityIndicator busy="true" height="40" width="40" color="#000000" visibility="{{ loadingMessage != 'Pengecekan Selesai' ? 'visible' : 'collapsed' }}" />
+                <Label textWrap="true" fontSize="16" color="{{ loadingMessage == 'Pengecekan Selesai' ? '#4CAF50' : '#000000' }}">
+                    <FormattedString>
+                        <Span text="&#xf058;" class="far" />
+                        <Span text="{{ '&nbsp;&nbsp;' + loadingMessage }}" />
+                    </FormattedString>
+                </Label>
             </StackLayout>
             <Label textWrap="true" color="#F44336" horizontalAlignment="center" margin="10 0" visibility="{{ isLostConnectionMessage ? 'visible' : 'collapsed' }}">
                 <FormattedString>
@@ -62,6 +68,12 @@
             <Label text="Kami tidak melakukan Collect Data sedikitpun, semua NIK KTP yang Kamu input disini tidak Kami Koleksi atau disimpan diserver, melainkan akan disimpan pada perangkat masing-masing Pengguna, dan data dapat dihapus kapanpun Pengguna mau." fontStyle="italic" textWrap="true" fontSize="16" textAlignment="center" /> -->
         </StackLayout>
         <StackLayout margin="0 20" row="7" tap="goToHistory">
+            <ui:BannerAd
+                height="100"
+                width="300"
+                unitId="ca-app-pub-1640120316722376/5022861732"
+                layoutChanged="bannerLoaded"
+            />
             <Label textWrap="true" color="#000" fontWeight="bold" horizontalAlignment="center">
                 <FormattedString>
                     <Span text="&#xf1da;" class="fas" fontSize="18" />

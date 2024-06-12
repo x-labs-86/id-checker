@@ -1,7 +1,4 @@
-import {
-  InterstitialAd,
-  RewardedInterstitialAd,
-} from "@nativescript/firebase-admob";
+import { InterstitialAd } from "@nativescript/firebase-admob";
 import { Http, Dialogs, Connectivity } from "@nativescript/core";
 
 import { SQL__query } from "~/sql_helper";
@@ -208,18 +205,43 @@ export function generateUUID() {
 
 export function loadMyAdMob() {
   const ad = InterstitialAd.createForAdRequest(
-    "ca-app-pub-1640120316722376/6155970269"
+    "ca-app-pub-1640120316722376/4268732000"
   );
+
+  console.log("show");
 
   ad.onAdEvent((event, error, data) => {
     // event : adLoaded, adClosed
-
+    console.log("AdEventType >> ", AdEventType);
+    console.log("event >> ", event);
+    console.log("error >> ", error);
+    console.log("data >> ", data);
     ad.show({
       immersiveModeEnabled: true,
     });
   });
 
   ad.load();
+  // ad.onAdEvent((event, error, data) => {
+  //   console.log(event);
+  //   switch (event) {
+  //     case AdEventType.LOADED:
+  //       break;
+  //     case AdEventType.CLOSED:
+  //       ad.show();
+  //       break;
+  //     case AdEventType.OPENED:
+  //       ad.show();
+  //       break;
+  //     case AdEventType.IMPRESSION:
+  //       break;
+  //     case AdEventType.FAILED_TO_SHOW_FULL_SCREEN_CONTENT:
+  //       console.log("Failed to show full screen content");
+  //       break;
+  //   }
+  // });
+
+  // ad.load();
 }
 
 export async function myHttpClient(_url, _method = "GET", _data = {}) {

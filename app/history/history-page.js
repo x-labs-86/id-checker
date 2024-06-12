@@ -23,7 +23,7 @@ export function onLoaded(args) {
   framePage = args.object.frame;
   setTimeout(() => {
     loadMyAdMob();
-  }, 2000);
+  }, 1500);
   __loadDataSqlite();
 }
 
