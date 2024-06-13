@@ -205,17 +205,18 @@ export function generateUUID() {
 
 export function loadMyAdMob() {
   const ad = InterstitialAd.createForAdRequest(
-    "ca-app-pub-1640120316722376/4268732000"
+    "ca-app-pub-1640120316722376/6155970269"
   );
 
-  console.log("show");
+  // console.log("show");
 
   ad.onAdEvent((event, error, data) => {
+    // console.log("show 2");
     // event : adLoaded, adClosed
-    console.log("AdEventType >> ", AdEventType);
-    console.log("event >> ", event);
-    console.log("error >> ", error);
-    console.log("data >> ", data);
+    // console.log("AdEventType >> ", AdEventType);
+    // console.log("event >> ", event);
+    // console.log("error >> ", error);
+    // console.log("data >> ", data);
     ad.show({
       immersiveModeEnabled: true,
     });

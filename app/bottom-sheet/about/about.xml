@@ -35,7 +35,7 @@
             <Label text="Cek dan validasi nomor KTP kamu disini. Aplikasi ini berfungsi hanya sebatas melakukan validasi NIK KTP saja, tidak lebih." textWrap="true" class="desc" />
             
             <Label text="Versi" textWrap="true" class="title" marginTop="10" />
-            <Label text="1.0.0 build 2" textWrap="true" class="desc" />
+            <Label text="1.0.1 build 3" textWrap="true" class="desc" />
 
             <Label text="Pengembang" textWrap="true" class="title" marginTop="10" />
             <Image src="~/assets/dev.png" height="15" marginTop="5" horizontalAlignment="left" />

@@ -2,9 +2,9 @@
     loaded="onLoaded" 
     navigatingTo="onNavigatingTo" 
     xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:ui="@nativescript/firebase-admob"
     actionBarHidden="false"
-    flat="true"
-    xmlns:ui="@nativescript/firebase-admob">
+    flat="true">
     <ActionBar>
         <GridLayout columns="auto, *">
             <Label textWrap="true" col="0">
@@ -36,7 +36,7 @@
                 <ActivityIndicator busy="true" height="40" width="40" color="#000000" visibility="{{ loadingMessage != 'Pengecekan Selesai' ? 'visible' : 'collapsed' }}" />
                 <Label textWrap="true" fontSize="16" color="{{ loadingMessage == 'Pengecekan Selesai' ? '#4CAF50' : '#000000' }}">
                     <FormattedString>
-                        <Span text="&#xf058;" class="far" />
+                        <!-- <Span text="&#xf058;" class="far" visibility="{{ loadingMessage == 'Pengecekan Selesai' ? 'visible' : 'collapsed' }}" /> -->
                         <Span text="{{ '&nbsp;&nbsp;' + loadingMessage }}" />
                     </FormattedString>
                 </Label>
@@ -57,7 +57,7 @@
             </Button>
         </StackLayout>
         <StackLayout tap="openDisclaimer" padding="0 20 0 20" horizontalAlignment="center" row="5">
-            <Button textWrap="true" padding="5 20" borderWidth="1" borderColor="#E0E0E0" borderRadius="50%">
+            <Button textWrap="true" padding="0 20" borderWidth="1" borderColor="#E0E0E0" borderRadius="50%">
                 <FormattedString>
                     <Span text="&#xf46d;" class="fas" fontSize="18" />
                     <Span text="&nbsp;Disclaimer &amp; Info Lainnya" fontSize="15" />
@@ -70,7 +70,7 @@
         <StackLayout margin="0 20" row="7" tap="goToHistory">
             <ui:BannerAd
                 height="100"
-                width="300"
+                width="320"
                 unitId="ca-app-pub-1640120316722376/5022861732"
                 layoutChanged="bannerLoaded"
             />

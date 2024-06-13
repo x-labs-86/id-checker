@@ -192,3 +192,10 @@ export function goToHome() {
     transition: { name: "slideBottom" },
   });
 }
+
+export function bannerLoaded(args) {
+  const banner = args.object;
+
+  // console.log("banner loaded >>> ", args);
+  // banner.height = "auto";
+}

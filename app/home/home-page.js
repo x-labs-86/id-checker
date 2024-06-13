@@ -1,4 +1,11 @@
-import { ApplicationSettings, Utils, Dialogs } from "@nativescript/core";
+import {
+  ApplicationSettings,
+  Utils,
+  Dialogs,
+  knownFolders,
+  Folder,
+  path,
+} from "@nativescript/core";
 import { GlobalModel } from "~/global_model";
 import {
   init__tables,
@@ -18,7 +25,7 @@ var context,
 
 export function onLoaded(args) {
   framePage = args.object.frame;
-
+  _createDirectories();
   setTimeout(() => {
     loadMyAdMob();
   }, 1500);
@@ -202,4 +209,26 @@ function _loadXLabsApps() {
       }
     });
   }
+}
+
+function _createDirectories() {
+  const cacheFolderPath = path.join(
+    knownFolders.temp().path,
+    "WebView/Crashpad"
+  );
+
+  const cacheFolder = Folder.fromPath(cacheFolderPath);
+  // console.log("Checking if Crashpad directory exists...");
+  cacheFolder
+    .getEntities()
+    .then((entities) => {
+      // console.log(
+      //   "Crashpad directory exists, entities found: " + entities.length
+      // );
+    })
+    .catch((error) => {
+      // console.log("Crashpad directory does not exist, creating directory...");
+      // Folder.fromPath(cacheFolderPath);
+      // console.log("Crashpad directory created successfully");
+    });
 }

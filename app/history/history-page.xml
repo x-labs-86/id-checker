@@ -2,6 +2,7 @@
     loaded="onLoaded" 
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:ui="@nativescript/firebase-admob"
     actionBarHidden="true"
     flat="true">
 
@@ -42,8 +43,14 @@
                 <Button row="3" tap="refreshTap" text="Refresh" width="100" />
             </GridLayout>
         </StackLayout>
-        <StackLayout row="3" visibility="{{ items ? 'visible' : 'collapsed' }}">
-            <Button class="btn-danger" tap="clearTap">
+        <StackLayout row="3">
+            <ui:BannerAd
+                height="100"
+                width="320"
+                unitId="ca-app-pub-1640120316722376/5022861732"
+                layoutChanged="bannerLoaded"
+            />
+            <Button class="btn-danger" tap="clearTap" marginTop="7" visibility="{{ items ? 'visible' : 'collapsed' }}">
                 <FormattedString>
                     <Span text="&#xf2ed;" class="fas" />
                     <Span text="&nbsp;&nbsp;Bersihkan semua data riwayat" />
